@@ -36,6 +36,9 @@ echo ""
 if [ $src_dir = '.' ]; then
 	show_error "Cannot execute from the directory where script is located"
 elif [ $src_dir = '..' ]; then
+	if [ `basename $PWD` != 'module' ]; then
+		show_error "Parent Directory Should be 'module'"
+	fi
 	src_dir=`readlink -f $src_dir`
 fi
 
@@ -52,7 +55,7 @@ create_dir `pwd` config src view
 ############## Copy and modify Module.php
 cd "$base_dir/$1/config"
 copy_file "$src_dir/module.config.php"
-sed -i "<Module>" $1 module.config.php
+sed -i "/s/Mod-name/$1/g" module.config.php
 cd ../src/
 create_dir . Controller Form Model
 ############## Copy and modify module.config.php
