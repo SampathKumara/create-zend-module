@@ -66,3 +66,11 @@ function uc_first {
 	echo $(tr '[:lower:]' '[:upper:]' <<< ${text:0:1})${text:1}
 }
 
+function replace_text {
+        if [ $# -ne 3 ]; then
+                show_error "Old text, New text and file should be provided"
+        fi
+        sed -i "s/$1/$2/g" $3
+        show_message "File $3 updated by replacing $1 -> $2"
+}
+

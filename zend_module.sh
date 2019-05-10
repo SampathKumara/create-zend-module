@@ -56,7 +56,7 @@ create_dir `pwd` config src view
 ############## Copy and modify Module.php
 cd "$base_dir/$module_name/config"
 copy_file "$src_dir/module.config.php"
-sed -i "s/Mod-name/$module_name/g" module.config.php
+replace_text "Mod-name" $module_name module.config.php
 cd ../src/
 create_dir . Controller Form Model
 ############## Copy and modify module.config.php
