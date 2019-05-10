@@ -1,11 +1,11 @@
-namespace <Module>;
+namespace Mod-name;
 
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'controllers' => [
         'factories' => [
-            Controller\AlbumController::class => InvokableFactory::class,
+            Controller\Mod-nameController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

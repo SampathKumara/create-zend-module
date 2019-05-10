@@ -49,13 +49,14 @@ elif [ $1 = "-h" ] || [ $1 = '--help' ]; then
 	show_help
 fi
 
-create_dir $base_dir $1
-cd $1
+module_name=`uc_first $1`
+create_dir $base_dir $module_name
+cd $module_name
 create_dir `pwd` config src view
 ############## Copy and modify Module.php
-cd "$base_dir/$1/config"
+cd "$base_dir/$module_name/config"
 copy_file "$src_dir/module.config.php"
-sed -i "/s/Mod-name/$1/g" module.config.php
+sed -i "s/Mod-name/$module_name/g" module.config.php
 cd ../src/
 create_dir . Controller Form Model
 ############## Copy and modify module.config.php

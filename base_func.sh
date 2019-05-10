@@ -60,3 +60,9 @@ function copy_file {
 	cp $1 $dst_dir
 	show_message "File $1 copied to $dst_dir"
 }
+
+function uc_first {
+	text=`echo $1 | tr '[:upper:]' '[:lower:]'`
+	echo $(tr '[:lower:]' '[:upper:]' <<< ${text:0:1})${text:1}
+}
+
