@@ -50,18 +50,20 @@ elif [ $1 = "-h" ] || [ $1 = '--help' ]; then
 fi
 
 module_name=`uc_first $1`
+directory_name=`echo $1 | tr '[:upper:]' '[:lower:]'`
 create_dir $base_dir $module_name
 cd $module_name
-create_dir `pwd` config src view
+create_dir `pwd` config src view/$directory_name/$directory_name
 ############## Copy and modify Module.php
 cd "$base_dir/$module_name/config"
 copy_file "$src_dir/module.config.php"
 replace_text "Mod-name" $module_name module.config.php
 cd ../src/
 create_dir . Controller Form Model
-############## Copy and modify module.config.php
-#cp $base_dir/Module.php .
-#cd ../view
+############## Copy and modify Module.php
+copy_file $src_dir/Module.php .
+replace_text "Mod-name" $module_name Module.php
+
 #sed -i "<Module>" $1 Module.php
 #dir_name=`echo $1 | tr '[:upper:]' '[:lower:]'`
 #echo $dir_name

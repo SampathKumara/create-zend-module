@@ -39,7 +39,7 @@ function create_dir {
 	do
 		count=$((count+1))
 		[ $count -eq 1 ] && continue			
-		mkdir $dir
+		mkdir -p $dir
 		show_message "Directory $dir created in `pwd`"
 	done
 }
@@ -52,7 +52,6 @@ function copy_file {
 		dst_dir=$2
 		if [ $2 = '.' ] || [ $2 = '..' ]; then
 			dst_dir=`readlink -f $dst_dir`
-			echo $dst_dir
 		fi
 	elif [ ! -f $1 ]; then
 		show_error "Source file does not exists"

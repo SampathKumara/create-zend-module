@@ -1,4 +1,4 @@
-namespace Module;
+namespace Mod-name;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
