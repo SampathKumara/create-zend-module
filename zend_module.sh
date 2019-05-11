@@ -64,11 +64,4 @@ create_dir . Controller Form Model
 copy_file $src_dir/Module.php .
 replace_text "Mod-name" $module_name Module.php
 
-#sed -i "<Module>" $1 Module.php
-#dir_name=`echo $1 | tr '[:upper:]' '[:lower:]'`
-#echo $dir_name
-#mkdir $dir_name
-#cd $dir_name
-#mkdir index
-
 exit_func
